@@ -1,16 +1,16 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/Home"
-import Layout from "./pages/Layout"
+import Home from "./pages/Home";
+import Layout from "./pages/Layout";
 import Apply from "./pages/Apply";
+import AllBlogsPage from "./pages/AllBlogsPage";
+import Business from "./pages/Business";
+import CartPage from "./pages/CartPage";
 import Catalog from "./pages/Catalog";
 import Company from "./pages/Company";
-import Business from "./pages/Business";
 import WishlistPage from "./pages/WishlistPage";
-import CartPage from "./pages/CartPage";
-import AllBlogsPage from "./pages/AllBlogsPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
-import { FavoritesProvider } from "./context/FavoritesContext";
 import { CartProvider } from "./context/CartContext";
+import { FavoritesProvider } from "./context/FavoritesContext";
 
 const routes = createBrowserRouter([
   {
@@ -58,7 +58,6 @@ const routes = createBrowserRouter([
 ]);
 
 function App() {
-
   return (
     <FavoritesProvider>
       <CartProvider>
@@ -68,4 +67,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
