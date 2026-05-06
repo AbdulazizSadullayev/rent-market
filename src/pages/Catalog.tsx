@@ -1,6 +1,7 @@
 import { Filter, Star } from "lucide-react"
 import { useState, useRef, useEffect } from "react"
 import ProductCard from "../components/ProductCard"
+import ProductCardSkeleton from "../components/ProductCardSkeleton"
 import { useProducts } from "@/hooks/useProducts"
 
 const SORT_OPTIONS = [
@@ -92,9 +93,13 @@ const Catalog = () => {
                 <div className="container">
                     <div className="mt-10">
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {(loading ? [] : products).map((p) => (
-                                <ProductCard key={p.id} {...p} />
-                            ))}
+                            {loading
+                                ? Array.from({ length: 6 }, (_, index) => (
+                                    <ProductCardSkeleton key={`catalog-skeleton-${index}`} />
+                                ))
+                                : products.map((p) => (
+                                    <ProductCard key={p.id} {...p} />
+                                ))}
                         </div>
                     </div>
                 </div>
