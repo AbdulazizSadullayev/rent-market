@@ -1,18 +1,29 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { CardOneObject } from '@/data'
 import { Gift } from 'lucide-react'
 import { useCart } from '@/hooks/useCart'
+import { useProducts } from '@/hooks/useProducts'
 
 const ProductDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>()
-  const product = CardOneObject.find((p) => p.id === Number(id))
+  const { products, loading } = useProducts()
+  const product = products.find((p) => p.id === Number(id))
 
   const [mainImage, setMainImage] = useState(product?.img || '')
   const [rentalPeriod, setRentalPeriod] = useState<'week' | 'month'>('week')
   const [quantity, setQuantity] = useState(1)
   const [added, setAdded] = useState(false)
   const { addToCart } = useCart()
+
+  useEffect(() => {
+    if (product?.img) {
+      setMainImage(product.img)
+    }
+  }, [product])
+
+  if (loading) {
+    return <div className="p-10 text-center">Загрузка товара...</div>
+  }
 
   if (!product) {
     return <div className="p-10 text-center">Товар не найден</div>

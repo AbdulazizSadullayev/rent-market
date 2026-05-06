@@ -1,7 +1,7 @@
 import { Filter, Star } from "lucide-react"
 import { useState, useRef, useEffect } from "react"
 import ProductCard from "../components/ProductCard"
-import { CardOneObject } from "@/data"
+import { useProducts } from "@/hooks/useProducts"
 
 const SORT_OPTIONS = [
     "Популярные",
@@ -10,7 +10,7 @@ const SORT_OPTIONS = [
 ]
 
 const Catalog = () => {
-    const products = CardOneObject
+    const { products, loading } = useProducts()
 
     const [isDropdownOpen, setDropdownOpen] = useState(false)
     const [currentSort, setCurrentSort] = useState(SORT_OPTIONS[0])
@@ -49,7 +49,7 @@ const Catalog = () => {
                         Каталог
                         </h1>
                         <span className="text-base font-normal text-gray-600">
-                            (124 Товар)
+                            ({products.length} Товар)
                         </span>
                 </div>
                 
@@ -92,7 +92,7 @@ const Catalog = () => {
                 <div className="container">
                     <div className="mt-10">
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {products.map((p) => (
+                            {(loading ? [] : products).map((p) => (
                                 <ProductCard key={p.id} {...p} />
                             ))}
                         </div>

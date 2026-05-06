@@ -20,8 +20,14 @@ import FooterCardOne from '../assets/footer_cadr-one.png'
 import FooterCardTwo from '../assets/footer_card-two.png'
 import FooterCardThree from '../assets/footer_card-three.png'
 
+export type HeaderLink = {
+    id: number;
+    text: string;
+    to: string;
+}
 
-export const headerLinks = [
+
+export const headerLinks: HeaderLink[] = [
     {
         id: 0,
         text: "Как оформить",
@@ -43,8 +49,12 @@ export const headerLinks = [
         to: "/forbusiness",
     },
 ]
+export type HeaderIcon = {
+    id: number;
+    icon: React.ElementType;
+}
 
-export const headerIcons = [
+export const headerIcons: HeaderIcon[] = [
     {
         id: 0,
         icon: ShoppingBag,
@@ -59,14 +69,23 @@ export const headerIcons = [
     },
 ]
 
-export const CardOneObject = [
+export type CardOneObject = {
+    id: number;
+    title: string;
+    img: string;
+    iconImages: string[];
+    currentPrice: string;
+    originalPrice: string;
+    rentalText: string;
+    iconLabels: string[];
+}
+
+export const CardOneObject: CardOneObject[] = [
     {
         id: 0,
         title: 'Велосипед - 26',
         img: MainOne,
-        iconImgOne: icon_one,
-        iconImgTwo: icon_two,
-        iconImgThree: icon_three,
+        iconImages: [icon_one, icon_two, icon_three],
         currentPrice: '180 000 сум.',
         originalPrice: '400 000 сум.',
         rentalText: 'Аренда 7 д.',
@@ -76,9 +95,7 @@ export const CardOneObject = [
         id: 1,
         title: 'Велосипед - 26A',
         img: MainTwo,
-        iconImgOne: icon_one,
-        iconImgTwo: icon_two,
-        iconImgThree: icon_three,
+        iconImages: [icon_one, icon_two, icon_three],
         currentPrice: '200 000 сум.',
         originalPrice: '450 000 сум.',
         rentalText: 'Аренда 7 д.',
@@ -88,9 +105,7 @@ export const CardOneObject = [
         id: 2,
         title: 'Велосипед - 29',
         img: MainThree,
-        iconImgOne: icon_one,
-        iconImgTwo: icon_two,
-        iconImgThree: icon_three,
+        iconImages: [icon_one, icon_two, icon_three],
         currentPrice: '220 000 сум.',
         originalPrice: '500 000 сум.',
         rentalText: 'Аренда 7 д.',
@@ -100,9 +115,7 @@ export const CardOneObject = [
         id: 3,
         title: 'Электровелосипед - 18',
         img: MainFour,
-        iconImgOne: icon_one,
-        iconImgTwo: icon_two,
-        iconImgThree: icon_three,
+        iconImages: [icon_one, icon_two, icon_three],
         currentPrice: '700 000 сум.',
         originalPrice: '1 200 000 сум.',
         rentalText: 'Аренда 14 д.',
@@ -112,9 +125,7 @@ export const CardOneObject = [
         id: 4,
         title: 'Электровелосипед - 16',
         img: MainFife,
-        iconImgOne: icon_one,
-        iconImgTwo: icon_two,
-        iconImgThree: icon_three,
+        iconImages: [icon_one, icon_two, icon_three],
         currentPrice: '750 000 сум.',
         originalPrice: '1 250 000 сум.',
         rentalText: 'Аренда 14 д.',
@@ -124,9 +135,7 @@ export const CardOneObject = [
         id: 5,
         title: 'Запасная батарея - 60V...',
         img: MainSix,
-        iconImgOne: icon_one,
-        iconImgTwo: icon_two,
-        iconImgThree: icon_three,
+        iconImages: [icon_one, icon_two, icon_three],
         currentPrice: '250 000 сум.',
         originalPrice: '500 000 сум.',
         rentalText: 'Аренда 14 д.',
@@ -135,7 +144,12 @@ export const CardOneObject = [
 ]
 
 
-export const cardThree = [
+export type CardThree = {
+    id: number;
+    imageSource: string;
+}           
+
+export const cardThree: CardThree[] = [
     { id: 1, imageSource: partnerOne },
     { id: 2, imageSource: partnerTwo },
     { id: 3, imageSource: partnerThree },
