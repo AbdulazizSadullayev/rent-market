@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { Gift } from 'lucide-react'
 import { useCart } from '@/hooks/useCart'
 import { useProducts } from '@/hooks/useProducts'
+import ProductSwiper from '@/components/ProductSwiper'
 
 const ProductDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>()
@@ -63,28 +64,15 @@ const ProductDetailPage: React.FC = () => {
     <main className="min-h-screen px-4 py-10">
       <div className="container max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
         {/* Left side: thumbnails + main image */}
-        <div className="flex gap-8">
-          {/* thumbnails column */}
-          <div className="flex flex-col gap-4">
-            {[product.img, product.img, product.img, product.img].map((src, idx) => (
-              <button
-                key={idx}
-                onClick={() => setMainImage(src)}
-                className="w-20 h-20 bg-gray-50 flex-shrink-0 rounded-lg overflow-hidden"
-              >
-                <img src={src} alt={product.title} className="w-full h-full object-cover" />
-              </button>
-            ))}
-          </div>
-          {/* main image container */}
-          <div className="flex-1 flex items-center justify-center bg-gray-50 rounded-3xl p-8">
-            <img src={mainImage} alt={product.title} className="max-h-[500px] object-contain" />
-          </div>
+        <div className="flex gap-4 flex-col">
+
+
+          <ProductSwiper gallery={[product.img, product.img, product.img, product.img]} />
         </div>
 
         {/* Right side: product info */}
         <div className="space-y-6">
-            {/* badge above title */}
+          {/* badge above title */}
           <span className="text-sm text-gray-500">Более 70 заказов</span>
           <h1 className="text-3xl font-bold">{product.title}</h1>
 
@@ -144,12 +132,12 @@ const ProductDetailPage: React.FC = () => {
           {/* actions */}
           <div className="flex flex-col gap-4 sm:flex-row">
             <button
-            onClick={handleAdd}
-            disabled={added}
-            className="flex-1 border border-green-500 text-green-500 bg-green-50 py-4 rounded-2xl font-bold uppercase hover:bg-green-100 disabled:opacity-50"
-          >
-            {added ? 'ДОБАВЛЕНО' : 'В КОРЗИНУ'}
-          </button>
+              onClick={handleAdd}
+              disabled={added}
+              className="flex-1 border border-green-500 text-green-500 bg-green-50 py-4 rounded-2xl font-bold uppercase hover:bg-green-100 disabled:opacity-50"
+            >
+              {added ? 'ДОБАВЛЕНО' : 'В КОРЗИНУ'}
+            </button>
             <button className="flex-1 bg-white border border-gray-300 text-gray-800 py-4 rounded-2xl font-bold uppercase hover:bg-gray-100">
               КУПИТЬ СЕЙЧАС
             </button>
